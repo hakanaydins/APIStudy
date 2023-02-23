@@ -2,7 +2,7 @@ package getRequest;
 
 public class Get01 {
    /*
-
+Bizler bu zamana kadar
 
     */
 
