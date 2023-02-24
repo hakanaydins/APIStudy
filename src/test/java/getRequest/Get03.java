@@ -1,11 +1,13 @@
 package getRequest;
 
 import baseURLs.JsonPlaceHolderBaseURL;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.*;
 
 public class Get03  extends JsonPlaceHolderBaseURL {
@@ -27,7 +29,6 @@ public class Get03  extends JsonPlaceHolderBaseURL {
 		    "userId" in 1 olduğunu verify et
      */
 
-
     /* sorunun cevabı :
 
         {
@@ -37,7 +38,6 @@ public class Get03  extends JsonPlaceHolderBaseURL {
             "completed": false
         }
  */
-
 
     @Test
     public void get03() {
@@ -53,8 +53,6 @@ public class Get03  extends JsonPlaceHolderBaseURL {
         specification.pathParams("todosPath","todos",
                 "idPath","2");
 
-
-
         // Step 2: Set the Expected Data (ignored)
 
 
@@ -69,11 +67,39 @@ public class Get03  extends JsonPlaceHolderBaseURL {
 
         // Step 4: Assertion operations
 
+/*
+         Then
+            Status Code un "200" olduğunu Assert et
+		And
+            Content Type ın "application/json" olduğunu assert et
+		And
+		    title ın “quis ut nam facilis et officia qui” olduğunu verify et.,
+		And
+		    “completed” ın false olduğunu verify et.
+		And
+		    “userId” in 1 olduğunu verify et
+         */
+
+        // 1. Way
+        /*
         response.then().assertThat().statusCode(200).contentType("application/json");
+
         response.
                 then().
                 assertThat().
-                body("title", Matchers.equalTo("quis ut nam facilis et officia qui")
+                body("title", Matchers.equalTo("quis ut nam facilis et officia qui"),
+                        "completed",Matchers.equalTo(false),
+                        "userId",Matchers.equalTo(1));*/
+
+        // 2. Way
+        response.
+                then().
+                assertThat().
+                statusCode(200).
+                contentType(ContentType.JSON).
+                body("title", equalTo("quis ut nam facilis et officia qui"),
+                        "completed",equalTo(false),
+                        "userId",equalTo(1));
 
     }
 
