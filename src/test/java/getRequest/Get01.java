@@ -34,7 +34,7 @@ public class Get01 {
             Given ---> testin yapılabilmesi için ön hazırlık/ön şart
             When ---> Action --> Gerçekleştirilecek Eylemler
             Then ---> Assertion için kullanıyoruz
-            And  ---> Öncesinde kullanılan keyword u etkisinin hala devame titğini zilere gösterir.
+            And  ---> Öncesinde kullanılan keyword u etkisinin hala devame etğini bizlere gösterir.
 
      */
 
