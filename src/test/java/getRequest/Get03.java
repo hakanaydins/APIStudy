@@ -53,7 +53,12 @@ public class Get03  extends JsonPlaceHolderBaseURL {
         specification.pathParams("todosPath","todos",
                 "idPath","2");
 
-        // Step 2: Set the Expected Data (ignored)
+        /*Step 2: Set the Expected Data (ignored)
+            -map
+            - array/list
+
+         */
+
 
 
         //Step 3: Send Request
