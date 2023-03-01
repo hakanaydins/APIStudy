@@ -3,8 +3,11 @@ package getRequest;
 import baseURLs.ApiZippopotamBaseURL;
 import io.restassured.response.Response;
 import org.junit.Test;
+import pojoDatas.ZippoPotamPlaces;
+import pojoDatas.ZippoPotamPojos;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
@@ -41,13 +44,10 @@ public class Get11 extends ApiZippopotamBaseURL {
     @Test
     public void get11(){
 
-        // Step 1: SEt URL
+        // Step 1: Set URL
         //http://api.zippopotam.us/TR/34010
         specification.pathParams("countryPath","TR",
                 "postCodePath","34010");
-
-
-
 
 
         //Step 2: Set Expected Data
@@ -64,8 +64,8 @@ public class Get11 extends ApiZippopotamBaseURL {
             "state abbreviation": "34",
             "latitude": "40.1589"
         }
-    ]
-}
+        ]
+       }
          */
 
 
@@ -81,13 +81,11 @@ public class Get11 extends ApiZippopotamBaseURL {
                 spec(specification).
                 when().
                 get("/{countryPath}/{postCodePath}");
-/*
-        System.out.println("RESPONSE: ");
-        response.prettyPrint();
+        /*
+           System.out.println("RESPONSE: ");
+           response.prettyPrint();
 
- */
-
-
+         */
 
         //Step 4: Assertion with GSON
         Map<String,Object> actualDataMap = response.as(HashMap.class);
@@ -100,8 +98,13 @@ public class Get11 extends ApiZippopotamBaseURL {
         assertEquals(zippoPotamPojos.getCountryAbbreviation(),actualDataMap.get("country abbreviation"));
         assertEquals(zippoPotamPojos.getZippoPotamPlaces().getPlaceName(),(((Map)((List)actualDataMap.get("places")).get(0))).get("place name"));
 
-
         assertEquals(zippoPotamPojos.getZippoPotamPlaces().getLatitude(),(((Map)((List)actualDataMap.get("places")).get(0)).get("latitude")));
+
+
+
+
+
+
 
     }
 
