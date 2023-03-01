@@ -67,7 +67,7 @@ public class Get08 extends SwapiApiBaseURL {
         specification.pathParams("vehiclesPath", "vehicles",
                 "idPath", "4");
 
-        //Step 2: Set Expected Data
+        //Step 2: Set Expected Data ---> TEST DATA-->TEST CASE VEYA TEST DÖKÜMANI(BUNLARI BİZ BELİRLİYORUZ)
 
         // Trik 1 ---> Her zaman içeriden başlayın.....
         List<String> filmsList = new ArrayList<>();
