@@ -100,6 +100,8 @@ public class Get11 extends ApiZippopotamBaseURL {
 
         assertEquals(zippoPotamPojos.getZippoPotamPlaces().getLatitude(),(((Map)((List)actualDataMap.get("places")).get(0)).get("latitude")));
 
+        assertEquals(zippoPotamPojos.getZippoPotamPlaces().getLongitude(),(((Map)((List)actualDataMap.get("places")).get(0)).get("logitude")));
+
 
 
 
