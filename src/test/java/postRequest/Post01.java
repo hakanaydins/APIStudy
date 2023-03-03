@@ -1,7 +1,11 @@
 package postRequest;
 
 import baseURLs.GoRestCoBaseURL;
+import io.restassured.response.Response;
 import org.junit.Test;
+import testData.GoRestApiTestData;
+
+import static io.restassured.RestAssured.given;
 
 public class Post01 extends GoRestCoBaseURL {
       /*
@@ -15,11 +19,11 @@ public class Post01 extends GoRestCoBaseURL {
    */
 
     @Test
-    public void post01(){
+    public void post01() {
 
         //Set URL
         //https://gorest.co.in/public/v2/users
-        specification.pathParam("usersPath","users");
+        specification.pathParam("usersPath", "users");
 
 
         //Set Expected Data
@@ -31,7 +35,7 @@ public class Post01 extends GoRestCoBaseURL {
         Response response = given().
                 spec(specification).
                 when().
-                header("Authorization","Bearer c0aa77eb8a368a7d991c8e10e6afb9756130abe80e29a6826477f8645165c7b0").
+                header("Authorization", "Bearer c0aa77eb8a368a7d991c8e10e6afb9756130abe80e29a6826477f8645165c7b0").
                 post("/{usersPath}");
 
         System.out.println("Response: ");
@@ -42,4 +46,5 @@ public class Post01 extends GoRestCoBaseURL {
         response.then().assertThat().statusCode(422);
 
 
+    }
 }
