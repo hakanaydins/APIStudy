@@ -18,15 +18,15 @@ public class Put02 extends RestFullBookerHerOkuAppBaseURL {
         Given
 	        1) https://restful-booker.herokuapp.com/booking/37
 	        2) {
-    "firstname" : "Drake",
-    "lastname" : "F..",
-    "totalprice" : 4000,
-    "depositpaid" : true,
-    "bookingdates" : {
-        "checkin" : "2022-01-01",
-        "checkout" : "2023-01-01"
-    },
-    "additionalneeds" : "API and Appium"
+                 "firstname" : "Drake",
+                 "lastname" : "F..",
+                "totalprice" : 4000,
+                 "depositpaid" : true,
+                 "bookingdates" : {
+                                 "checkin" : "2022-01-01",
+                                  "checkout" : "2023-01-01"
+                                     },
+                 "additionalneeds" : "API and Appium"
 }
         3) Kullanıcı Auth. olarak ilk olarak  Header a Cookie ile daha sonra ise Basic Autoh ile  req bulunmalı.
             Authorization ==>>  Basic YWRtaW46cGFzc3dvcmQxMjM=
@@ -61,26 +61,24 @@ public class Put02 extends RestFullBookerHerOkuAppBaseURL {
         specification.pathParams("bookingPath","booking",
                 "idPath","37");
 
-
         //Set Expected and Request Body
 
         /*
-        {
+     {
     "firstname" : "Drake",
     "lastname" : "F..",
     "totalprice" : 4000,
     "depositpaid" : true,
     "bookingdates" : {
-        "checkin" : "2022-01-01",
-        "checkout" : "2023-01-01"
-    },
+                     "checkin" : "2022-01-01",
+                     "checkout" : "2023-01-01"
+                     },
     "additionalneeds" : "API and Appium"
-}
+    }
          */
 
         BookingDatesPojoPost bookingDatesPojoPost = new BookingDatesPojoPost("2022-01-01","2023-01-01");
         RestFulBookingPojo restFulBookingPojo = new RestFulBookingPojo("Drake","F..",4000,true,bookingDatesPojoPost,"API and Appium");
-
 
         //System.out.println(restFulBookingPojo);
         //Step 3: Send a request;
@@ -103,8 +101,6 @@ public class Put02 extends RestFullBookerHerOkuAppBaseURL {
         //401  ----->> Unauth.     -----------------    Authj. ile ilgli herahngi bir value bulunmadığı zaman.
         //403 ------>> Forbidden    - - -- - -- - -- Token veya ilgili auth. metodu ne ise onunla ilgili oalrak value var fakat yanlış yahut expire olmuş olabilir.
 
-
-
         //Step 4: Assertion
 
         JsonPath jsonPath = response.jsonPath();
@@ -116,9 +112,7 @@ public class Put02 extends RestFullBookerHerOkuAppBaseURL {
         assertEquals(jsonPath.getString("bookingdates.checkout"),bookingDatesPojoPost.getCheckout());
         assertEquals(jsonPath.getString("additionalneeds"),restFulBookingPojo.getAdditionalneeds());
 
-
     }
 
-        
         
 }
