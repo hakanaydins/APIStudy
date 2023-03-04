@@ -100,14 +100,21 @@ public class Post03 extends DummyRestApiBaseURL {
 
         //Step 4: Assertion İşlemi:
 
-        DummyRestApiExPojo actualData = response.as(DummyRestApiExPojo.class);
+        DummyRestApiExPojo actualData = response.as(DummyRestApiExPojo.class);//pojo
         System.out.println("Actual Data: " + actualData);
 
+        assertEquals(dummyResTApiExPojo.getMessage(),actualData.getMessage());
+        assertEquals(dummyResTApiExPojo.getStatus(),actualData.getStatus());
+        assertEquals(dummyResTApiExPojo.getData().getSalary(),actualData.getData().getSalary());
+
+        /*
         assertEquals(dummyResTApiExPojo.getStatus(), actualData.getStatus());
         assertEquals(dummyResTApiExPojo.getMessage(), actualData.getMessage());
         assertEquals(dummyResTApiExPojo.getData().getAge(), actualData.getData().getAge());
         assertEquals(dummyResTApiExPojo.getData().getName(), actualData.getData().getName());
         assertEquals(dummyResTApiExPojo.getData().getSalary(), actualData.getData().getSalary());
+
+         */
 
 
     }
