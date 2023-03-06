@@ -5,6 +5,11 @@ Feature: Kullanıcı Trello API uzerinde cesitli islemler yapabilmelidir
      #Bu scen. de bizler board create edeceğiz ayrıca taskımıza bizlere verilen
     # diğer işlemleri gerçekleştirebilmek için bizlerin board id sine ihtiyacı vardır
     #Board ıd yi de bu scen. alabacağız. Ve Boardun create edildiğini assert edeceğiz.    ------->>>>>>>>>< class seviyesinde tanımla
+
+  # https://api.trello.com/1/boards/?name={name}&key=APIKey&token=APIToken   (post)
+
+  @createBoard
+
   Scenario: Kullanıcı board create edebilmeli
     When Kullanıcı board create edebilmek icin ilgili url e POST methodu ve ilgili endpointler ile request atar "idPath","1","boardsPath","boards"
     And Kullanıcı board id yi alır
